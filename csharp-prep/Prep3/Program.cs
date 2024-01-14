@@ -5,15 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Prep3 World!");
-    }
-}
-using System;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-    
         Random randomGenerator = new Random();
         int magicNumber = randomGenerator.Next(1, 101);
 
@@ -22,21 +14,26 @@ class Program
         while (guess != magicNumber)
         {
             Console.Write("What is your guess? ");
-            guess = int.Parse(Console.ReadLine());
 
-            if (magicNumber > guess)
+            if (int.TryParse(Console.ReadLine(), out guess))
             {
-                Console.WriteLine("Higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Lower");
+                if (magicNumber > guess)
+                {
+                    Console.WriteLine("Higher");
+                }
+                else if (magicNumber < guess)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine("That's it! Good guess!");
+                }
             }
             else
             {
-                Console.WriteLine("Thats it! Good guess!");
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
             }
-
-        }                    
+        }
     }
 }

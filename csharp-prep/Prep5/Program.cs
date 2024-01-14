@@ -5,14 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Prep5 World!");
-    }
-}
-using System;
 
-class Program
-{
-    static void Main(string[] args)
-    {
         DisplayWelcomeMessage();
 
         string userName = PromptUserName();
@@ -38,8 +31,22 @@ class Program
 
     static int PromptUserNumber()
     {
-        Console.Write("Please enter your favorite number: ");
-        int number = int.Parse(Console.ReadLine());
+        int number;
+
+        while (true)
+        {
+            Console.Write("Please enter your favorite number: ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out number))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+            }
+        }
 
         return number;
     }
